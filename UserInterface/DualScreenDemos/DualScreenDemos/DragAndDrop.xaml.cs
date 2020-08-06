@@ -34,13 +34,13 @@ namespace DualScreenDemos
 
         void ImageDragOver(System.Object sender, Xamarin.Forms.DragEventArgs e)
         {
-            if (e.Data.Image == null)
+            if (e.Data?.Image == null)
                 e.AcceptedOperation = DataPackageOperation.None;
         }
 
         void TextDragOver(System.Object sender, Xamarin.Forms.DragEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(e.Data.Text))
+            if (String.IsNullOrWhiteSpace(e.Data?.Text))
                 e.AcceptedOperation = DataPackageOperation.None;
         }
 
