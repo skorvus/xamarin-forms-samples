@@ -52,6 +52,9 @@ namespace DualScreenDemos
                 case "DualScreenInfo with non TwoPaneView":
                     Navigation.PushAsync(new GridUsingDualScreenInfo());
                     break;
+                case "Drag and Drop":
+                    Navigation.PushAsync(new DragAndDrop());
+                    break;
 
             }
         }

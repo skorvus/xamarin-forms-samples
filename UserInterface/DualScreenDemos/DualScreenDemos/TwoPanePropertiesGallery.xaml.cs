@@ -40,9 +40,21 @@ namespace DualScreenDemos
 			PanePriority.SelectedIndex = 0;
 			TallModeConfiguration.SelectedIndex = 1;
 			WideModeConfiguration.SelectedIndex = 1;
+            DualScreenInfo.Current.HingeAngleChanged += OnHingeAngleChanged;
 		}
 
-		void Setup(double width, double height)
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+			DualScreenInfo.Current.HingeAngleChanged -= OnHingeAngleChanged;
+		}
+
+        void OnHingeAngleChanged(object sender, HingeAngleChangedEventArgs e)
+        {
+			HingeAngle.Text = $"{e.HingeAngleInDegrees}";
+		}
+
+        void Setup(double width, double height)
 		{
 			if (width <= 0 || height <= 0)
 				return;

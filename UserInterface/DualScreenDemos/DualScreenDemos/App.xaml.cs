@@ -8,6 +8,7 @@ namespace DualScreenDemos
     {
         public App()
         {
+            Device.SetFlags(new[] { "DragAndDrop_Experimental" });
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());

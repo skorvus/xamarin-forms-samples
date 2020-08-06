@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Xamarin.Forms.DualScreen;assembly=Xamarin.Forms.DualScreen"
+    x:Class="DualScreenDemos.DragAndDrop">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="LightGray"></Setter>
+            <Setter Property="Margin" Value="4"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    <local:TwoPaneView MinWideModeWidth="2000">
+        <local:TwoPaneView.Pane1>
+            <local:TwoPaneView MinTallModeHeight="2000" MinWideModeWidth="0">
+                <local:TwoPaneView.Pane1>
+                    <Frame>
+                        <Image BackgroundColor="LightGray" Source="surface_duo">
+                            <Image.GestureRecognizers>
+                                <DragGestureRecognizer DropCompleted="ImageDropCompleted" DragStarting="ImageDragStarting" CanDrag="True"></DragGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                </local:TwoPaneView.Pane1>
+                <local:TwoPaneView.Pane2>
+                    <Frame>
+                        <Label FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="The perfect balance of productivity and mobility. Surface Duo is a new dual-screen device that fits in your pocket. With two screens connected by a revolutionary 360° hinge, Surface Duo brings together the best of Microsoft and Android to reimagine productivity on the go. Coming Holiday 2020.">
+                            <Label.GestureRecognizers>
+                                <DragGestureRecognizer DropCompleted="TextDropCompleted" DragStarting="TextDragStarting" CanDrag="True"></DragGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Frame>
+                </local:TwoPaneView.Pane2>
+            </local:TwoPaneView>
+        </local:TwoPaneView.Pane1>
+        <local:TwoPaneView.Pane2>
+            <local:TwoPaneView MinTallModeHeight="2000" MinWideModeWidth="0">
+                <local:TwoPaneView.Pane1>
+                    <Frame x:Name="imageFrame">
+                        <Frame.GestureRecognizers>
+                            <DropGestureRecognizer Drop="OnDropImage" DragOver="ImageDragOver" AllowDrop="True"></DropGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="ic_photo_black_24dp" x:Name="DropImage">
+                                <Image.GestureRecognizers>
+                                    <DropGestureRecognizer Drop="OnDropImage" AllowDrop="True"></DropGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Drag Image here">
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+                </local:TwoPaneView.Pane1>
+                <local:TwoPaneView.Pane2>
+                    <Frame x:Name="textFrame">
+                        <Frame.GestureRecognizers>
+                            <DropGestureRecognizer Drop="OnTextDrop" DragOver="TextDragOver" AllowDrop="True"></DropGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="ic_text_fields_black_24dp" x:Name="ImageDest">
+                            </Image>
+                            <Label Text="Drag Text here" x:Name="DropLabel">
+                                <Label.GestureRecognizers>
+                                    <DropGestureRecognizer Drop="OnTextDrop" AllowDrop="True"></DropGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+                </local:TwoPaneView.Pane2>
+            </local:TwoPaneView>
+        </local:TwoPaneView.Pane2>
+    </local:TwoPaneView>
+</ContentPage>

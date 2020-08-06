@@ -31,7 +31,7 @@
                     <Picker Title="WideModeConfiguration" x:Name="WideModeConfiguration" SelectedIndex="1">
                     </Picker>
                     <Label Text="Hinge Angle (only works on Android):"></Label>
-                    <twoPaneGallery:HingeAngleLabel />
+                    <Label x:Name="HingeAngle" />
                     <Label Text="Hinge Angle is controlled via the pressure sensor on the simulator."></Label>
                 </StackLayout>
             </local:TwoPaneView.Pane1>
